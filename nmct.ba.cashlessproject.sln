@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.tempui", "nmct.ba.cashlessproject.tempui\nmct.ba.cashlessproject.tempui.csproj", "{D28D0B3E-F974-477E-AEF7-ED22867FA06B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.api", "nmct.ba.cashlessproject.api\nmct.ba.cashlessproject.api.csproj", "{92270504-9C2E-4247-8726-3766B43541EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.classlibrary", "nmct.ba.cashlessproject.classlibrary\nmct.ba.cashlessproject.classlibrary.csproj", "{7BFC0CCB-CC78-433B-8CA8-CF305959F123}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D28D0B3E-F974-477E-AEF7-ED22867FA06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D28D0B3E-F974-477E-AEF7-ED22867FA06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D28D0B3E-F974-477E-AEF7-ED22867FA06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92270504-9C2E-4247-8726-3766B43541EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92270504-9C2E-4247-8726-3766B43541EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92270504-9C2E-4247-8726-3766B43541EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92270504-9C2E-4247-8726-3766B43541EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFC0CCB-CC78-433B-8CA8-CF305959F123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFC0CCB-CC78-433B-8CA8-CF305959F123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFC0CCB-CC78-433B-8CA8-CF305959F123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFC0CCB-CC78-433B-8CA8-CF305959F123}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
