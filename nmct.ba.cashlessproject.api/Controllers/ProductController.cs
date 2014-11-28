@@ -14,7 +14,7 @@ namespace nmct.ba.cashlessproject.api.Controllers
 {
     public class ProductController : ApiController
     {
-        // GET: nig
+        // GET: api/Product
         public IEnumerable<Product> Get()
         {
             DbDataReader reader = Database.GetData("ConnectionString", "Select * from CashlessProject.dbo.Product;");

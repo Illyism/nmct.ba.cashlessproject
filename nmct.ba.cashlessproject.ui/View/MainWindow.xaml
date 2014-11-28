@@ -1,0 +1,44 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.ui.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.View"
+        xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+        Title="Cashless Payment" Height="300" Width="500">
+    <Window.DataContext>
+        <vm:ApplicationVM />
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:CustomersVM}">
+            <v:CustomersPage></v:CustomersPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EmployeesVM}">
+            <v:EmployeesPage></v:EmployeesPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ErrorLogsVM}">
+            <v:ErrorLogsPage></v:ErrorLogsPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ProductsVM}">
+            <v:ProductsPage></v:ProductsPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RegistersVM}">
+            <v:RegistersPage></v:RegistersPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SalesVM}">
+            <v:SalesPage></v:SalesPage>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="54*"/>
+        </Grid.ColumnDefinitions>
+        <ItemsControl ItemsSource="{Binding Pages}" Grid.Column="0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ContentControl Content="{Binding CurrentPage}" Grid.Column="1"/>
+    </Grid>
+</Window>
