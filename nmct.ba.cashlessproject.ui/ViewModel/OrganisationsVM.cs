@@ -4,6 +4,7 @@ using nmct.ba.cashlessproject.classlibrary;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -32,9 +33,10 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
 
         private async void GetOrganisations()
         {
+            Console.WriteLine("Getting Organisations");
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:49321/api/Organisation");
+                HttpResponseMessage response = await client.GetAsync("http://localhost:61505/api/Organisation");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
@@ -42,6 +44,5 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
                 }
             }
         }
-
     }
 }

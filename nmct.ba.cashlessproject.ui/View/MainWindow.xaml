@@ -3,11 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.View"
         xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
-        Title="Cashless Payment" Height="300" Width="500">
-    <Window.DataContext>
-        <vm:ApplicationVM />
-    </Window.DataContext>
+        Title="Cashless Payment" Height="500" Width="700">
     <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Style.Setters>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}" x:Key="SidebarMenu">
+            <Style.Setters>
+                <Setter Property="Margin" Value="4"></Setter>
+            </Style.Setters>
+            <Style.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="BorderThickness" Value="1,0"/>
+                    <Setter Property="FontSize" Value="14"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}" x:Key="TopActions">
+            <Style.Setters>
+                <Setter Property="Margin" Value="0,5"></Setter>
+            </Style.Setters>
+        </Style>
         <DataTemplate DataType="{x:Type vm:CustomersVM}">
             <v:CustomersPage></v:CustomersPage>
         </DataTemplate>
@@ -26,19 +45,43 @@
         <DataTemplate DataType="{x:Type vm:SalesVM}">
             <v:SalesPage></v:SalesPage>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:OrganisationsVM}">
+            <v:OrganisationsPage></v:OrganisationsPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:LoginVM}">
+            <v:LoginPage></v:LoginPage>
+        </DataTemplate>
     </Window.Resources>
+    <Window.DataContext>
+        <vm:ApplicationVM />
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="19*"/>
-            <ColumnDefinition Width="54*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <ItemsControl ItemsSource="{Binding Pages}" Grid.Column="0">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <ContentControl Content="{Binding CurrentPage}" Grid.Column="1"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl Grid.Row="0" Grid.ColumnSpan="2">
+            <v:MenuControl></v:MenuControl>
+        </ContentControl>
+
+        <StackPanel Style="{StaticResource SidebarMenu}" Grid.Row="1" Grid.Column="0">
+            <ItemsControl ItemsSource="{Binding Pages}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <ContentControl Content="{Binding CurrentPage}" Grid.Column="1"/>
+        </Grid>
+
     </Grid>
 </Window>

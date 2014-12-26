@@ -1,5 +1,5 @@
-﻿using nmct.ba.cashlessproject.classlibrary;
-using NMCT.DropBox.DataAccess;
+﻿using nmct.ba.cashlessproject.api.Helpers;
+using nmct.ba.cashlessproject.classlibrary;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,7 +16,7 @@ namespace nmct.ba.cashlessproject.api.Controllers
         // GET: api/Organisation
         public IEnumerable<Organisation> Get()
         {
-            DbDataReader reader = Database.GetData("ConnectionString", "Select * from CashlessProject.dbo.Organisation;");
+            DbDataReader reader = Database.GetData("CashlessAdmin", "Select * from Organisation;");
             List<Organisation> list = new List<Organisation>();
             while (reader.Read())
                 list.Add(ConstructOrganisation(reader));
@@ -44,9 +44,9 @@ namespace nmct.ba.cashlessproject.api.Controllers
         // GET: api/Organisation/5
         public Organisation Get(int id)
         {
-            DbParameter par = Database.AddParameter("ConnectionString", "ID", id);
+            DbParameter par = Database.AddParameter("CashlessAdmin", "ID", id);
             DbParameter[] pars = { par };
-            DbDataReader reader = Database.GetData("ConnectionString", "Select * from CashlessProject.dbo.Organisation WHERE ID=@ID;", pars);
+            DbDataReader reader = Database.GetData("CashlessAdmin", "Select * from Organisation WHERE ID=@ID;", pars);
             List<Organisation> list = new List<Organisation>();
             while (reader.Read())
                 list.Add(ConstructOrganisation(reader));

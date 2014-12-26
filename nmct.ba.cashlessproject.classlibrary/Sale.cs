@@ -15,5 +15,9 @@ namespace nmct.ba.cashlessproject.classlibrary
         public int ProductID { get; set; }
         public int Amount { get; set; }
         public double TotalPrice { get; set; }
+
+        public string CustomerName { get; set; }
+        public string RegisterName { get; set; }
+        public string ProductName { get; set; }
     }
 }

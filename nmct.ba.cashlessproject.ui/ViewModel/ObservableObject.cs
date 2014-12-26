@@ -13,6 +13,7 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
 
         protected void OnPropertyChanged(string propertyName)
         {
+            Console.WriteLine("Changed: " + propertyName);
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));

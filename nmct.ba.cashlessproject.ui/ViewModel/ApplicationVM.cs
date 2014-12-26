@@ -1,40 +1,40 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using nmct.ba.cashlessproject.ui.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Thinktecture.IdentityModel.Client;
 
 namespace nmct.ba.cashlessproject.ui.ViewModel
 {
     public class ApplicationVM : ObservableObject
     {
+        public static TokenResponse token = null;
+        public AccountWindow AccountWindow = null;
+
         public ApplicationVM()
         {
-            Pages.Add(new CustomersVM());
-            Pages.Add(new EmployeesVM());
-            Pages.Add(new ErrorLogsVM());
-            Pages.Add(new OrganisationsVM());
-            Pages.Add(new ProductsVM());
-            Pages.Add(new RegistersVM());
-            Pages.Add(new SalesVM());
+            CurrentPage = new LoginVM();
         }
 
-        private List<IPage> _pages;
-        public List<IPage> Pages
+        private ObservableCollection<IPage> _pages;
+        public ObservableCollection<IPage> Pages
         {
             get {
+                Console.WriteLine("Get Pages");
                 if (_pages == null)
-                    _pages = new List<IPage>();
+                    _pages = new ObservableCollection<IPage>();
                 return _pages;
             }
         }
 
-        private object _currentPage;
-
-        public object CurrentPage
+        private IPage _currentPage;
+        public IPage CurrentPage
         {
             get { return _currentPage; }
             set { _currentPage = value; OnPropertyChanged("CurrentPage"); }
@@ -45,11 +45,32 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
             get { return new RelayCommand<IPage>(ChangePage);  }
         }
 
-        private void ChangePage(IPage page)
+        public void ChangePage(IPage page)
         {
             CurrentPage = page;
         }
-        
+
+        public void LoggedIn()
+        {
+            Pages.Add(new CustomersVM());
+            Pages.Add(new RegistersVM());
+            Pages.Add(new EmployeesVM());
+            Pages.Add(new ProductsVM());
+            Pages.Add(new SalesVM());
+            OnPropertyChanged("Pages");
+
+            ChangePage(Pages[0]);
+        }
+
+        internal void LogOut()
+        {
+            ApplicationVM.token = null;
+            Pages.Clear();
+            OnPropertyChanged("Pages");
+
+            ChangePage(new LoginVM());
+        }
+
         
     }
 }

@@ -5,12 +5,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="500">
     <UserControl.DataContext>
         <vm:ProductsVM/>
     </UserControl.DataContext>
+    <UserControl.InputBindings>
+        <KeyBinding Key="N" Modifiers="Control" Command="{Binding AddProductCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveProductCommand}"/>
+        <KeyBinding Key="Delete" Command="{Binding DeleteProductCommand}"/>
+    </UserControl.InputBindings>
     <Grid>
-        <Label Content="Products"></Label>
-        <ListBox ItemsSource="{Binding Products}" DisplayMemberPath="ProductName"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox IsSynchronizedWithCurrentItem="True" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Products}" DisplayMemberPath="ProductName" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="_Add Product" Command="{Binding AddProductCommand}" />
+                    <Separator></Separator>
+                    <MenuItem Header="_Save" Command="{Binding SaveProductCommand}" />
+                    <MenuItem Header="_Remove" Command="{Binding DeleteProductCommand}" />
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="8">
+            <Label Content="Name:"></Label>
+            <TextBox Text="{Binding SelectedProduct.ProductName}"></TextBox>
+
+            <Label Content="Price:"></Label>
+            <TextBox Text="{Binding SelectedProduct.Price}"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="8" Orientation="Horizontal">
+            <Button Content="Add Product" Command="{Binding AddProductCommand}"/>
+            <Button Content="Delete Product" Command="{Binding DeleteProductCommand}"/>
+            <Button Content="Save Product" Command="{Binding SaveProductCommand}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

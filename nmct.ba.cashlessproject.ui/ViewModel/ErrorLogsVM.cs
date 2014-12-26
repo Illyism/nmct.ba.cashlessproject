@@ -32,9 +32,10 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
 
         private async void GetErrorLogs()
         {
+            Console.WriteLine("Getting Error Logs");
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:49321/api/ErrorLog");
+                HttpResponseMessage response = await client.GetAsync("http://localhost:61505/api/ErrorLog");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();

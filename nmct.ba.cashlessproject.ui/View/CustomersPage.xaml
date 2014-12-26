@@ -5,12 +5,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="500">
     <UserControl.DataContext>
         <vm:CustomersVM/>
     </UserControl.DataContext>
+    <UserControl.InputBindings>
+        <KeyBinding Key="N" Modifiers="Control" Command="{Binding AddCustomerCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveCustomerCommand}"/>
+        <KeyBinding Key="Delete" Command="{Binding DeleteCustomerCommand}"/>
+    </UserControl.InputBindings>
     <Grid>
-        <Label Content="Customers"></Label>
-        <ListBox ItemsSource="{Binding Customers}" DisplayMemberPath="CustomerName"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox IsSynchronizedWithCurrentItem="True" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Customers}" DisplayMemberPath="CustomerName" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="_Add Customer" Command="{Binding AddCustomerCommand}" />
+                    <Separator></Separator>
+                    <MenuItem Header="_Save" Command="{Binding SaveCustomerCommand}" />
+                    <MenuItem Header="_Remove" Command="{Binding DeleteCustomerCommand}" />
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="8">
+            <Label Content="Name:"></Label>
+            <TextBox Text="{Binding SelectedCustomer.CustomerName}"></TextBox>
+
+            <Label Content="Address:"></Label>
+            <TextBox Text="{Binding SelectedCustomer.Address}"></TextBox>
+
+            <Label Content="Balance:"></Label>
+            <TextBox Text="{Binding SelectedCustomer.Balance}"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="8" Orientation="Horizontal">
+            <Button Content="Add Customer" Command="{Binding AddCustomerCommand}"/>
+            <Button Content="Delete Customer" Command="{Binding DeleteCustomerCommand}"/>
+            <Button Content="Save Customer" Command="{Binding SaveCustomerCommand}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

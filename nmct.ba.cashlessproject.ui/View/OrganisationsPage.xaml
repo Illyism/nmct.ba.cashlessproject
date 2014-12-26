@@ -11,6 +11,6 @@
     </UserControl.DataContext>
     <Grid>
         <Label Content="Organisations"></Label>
-        <ListBox ItemsSource="{Binding Organisations}" DisplayMemberPath="OrganisationName"/>
+        <ListBox ItemsSource="{Binding Organisations}" DisplayMemberPath="OrganisationName" />
     </Grid>
 </UserControl>

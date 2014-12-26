@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace nmct.ba.cashlessproject.classlibrary
 {
-    public class Organisation
+    public class Organisation : IFilterableType
     {
         public int ID { get; set; }
         public string Login { get; set; }
@@ -18,5 +18,7 @@ namespace nmct.ba.cashlessproject.classlibrary
         public string Address { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+
+        public string Name { get { return OrganisationName; } }
     }
 }

@@ -83,8 +83,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="ViewModel\AccountVM.cs" />
     <Compile Include="ViewModel\ApplicationVM.cs" />
     <Compile Include="ViewModel\CustomersVM.cs" />
+    <Compile Include="ViewModel\LoginVM.cs" />
+    <Compile Include="ViewModel\MenuVM.cs" />
     <Compile Include="ViewModel\RegistersVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
     <Compile Include="ViewModel\OrganisationsVM.cs" />
@@ -93,6 +97,15 @@
     <Compile Include="ViewModel\ProductsVM.cs" />
     <Compile Include="ViewModel\IPage.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="View\AccountWindow.xaml.cs">
+      <DependentUpon>AccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuControl.xaml.cs">
+      <DependentUpon>MenuControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SalePage.xaml.cs">
       <DependentUpon>SalePage.xaml</DependentUpon>
     </Compile>
@@ -121,6 +134,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SalePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
