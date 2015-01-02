@@ -1,10 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
+using nmct.ba.cashlessproject.classlibrary;
 using nmct.ba.cashlessproject.ui.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -50,26 +53,37 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
             CurrentPage = page;
         }
 
+        private bool _loggedIn;
+
+        public bool IsLoggedIn
+        {
+            get { return _loggedIn; }
+            set { _loggedIn = value; OnPropertyChanged("IsLoggedIn"); }
+        }
+        
+
         public void LoggedIn()
         {
-            Pages.Add(new CustomersVM());
-            Pages.Add(new RegistersVM());
             Pages.Add(new EmployeesVM());
             Pages.Add(new ProductsVM());
+            Pages.Add(new CustomersVM());
+            Pages.Add(new RegistersVM());
             Pages.Add(new SalesVM());
             OnPropertyChanged("Pages");
-
+            IsLoggedIn = true;
             ChangePage(Pages[0]);
         }
 
-        internal void LogOut()
+        public void LogOut()
         {
             ApplicationVM.token = null;
             Pages.Clear();
             OnPropertyChanged("Pages");
-
             ChangePage(new LoginVM());
+            IsLoggedIn = false;
         }
+
+        
 
         
     }

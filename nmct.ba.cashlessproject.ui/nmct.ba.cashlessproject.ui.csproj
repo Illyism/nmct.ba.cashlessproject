@@ -84,6 +84,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\PageConverter.cs" />
+    <Compile Include="Validation\ValidationRules.cs" />
     <Compile Include="ViewModel\AccountVM.cs" />
     <Compile Include="ViewModel\ApplicationVM.cs" />
     <Compile Include="ViewModel\CustomersVM.cs" />
@@ -91,8 +93,6 @@
     <Compile Include="ViewModel\MenuVM.cs" />
     <Compile Include="ViewModel\RegistersVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
-    <Compile Include="ViewModel\OrganisationsVM.cs" />
-    <Compile Include="ViewModel\ErrorLogsVM.cs" />
     <Compile Include="ViewModel\EmployeesVM.cs" />
     <Compile Include="ViewModel\ProductsVM.cs" />
     <Compile Include="ViewModel\IPage.cs" />
@@ -103,20 +103,11 @@
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MenuControl.xaml.cs">
-      <DependentUpon>MenuControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SalePage.xaml.cs">
-      <DependentUpon>SalePage.xaml</DependentUpon>
+    <Compile Include="View\SalesPage.xaml.cs">
+      <DependentUpon>SalesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RegistersPage.xaml.cs">
       <DependentUpon>RegistersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\OrganisationsPage.xaml.cs">
-      <DependentUpon>OrganisationsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ErrorLogsPage.xaml.cs">
-      <DependentUpon>ErrorLogsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
@@ -134,6 +125,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\AccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,23 +137,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MenuControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SalePage.xaml">
+    <Page Include="View\SalesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\RegistersPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\OrganisationsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\ErrorLogsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

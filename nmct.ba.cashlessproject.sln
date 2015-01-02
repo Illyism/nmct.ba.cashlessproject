@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.ui"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.web", "nmct.ba.cashlessproject.web\nmct.ba.cashlessproject.web.csproj", "{1AD084E1-D333-4B01-AC68-2233D25198EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.employee", "nmct.ba.cashlessproject.employee\nmct.ba.cashlessproject.employee.csproj", "{E07853EE-FF37-4225-95C3-9A82F1738EAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.customer", "nmct.ba.cashlessproject.customer\nmct.ba.cashlessproject.customer.csproj", "{C68BF40D-5AF6-4452-A602-9B3F976F7047}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{1AD084E1-D333-4B01-AC68-2233D25198EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AD084E1-D333-4B01-AC68-2233D25198EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AD084E1-D333-4B01-AC68-2233D25198EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E07853EE-FF37-4225-95C3-9A82F1738EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E07853EE-FF37-4225-95C3-9A82F1738EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E07853EE-FF37-4225-95C3-9A82F1738EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E07853EE-FF37-4225-95C3-9A82F1738EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C68BF40D-5AF6-4452-A602-9B3F976F7047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68BF40D-5AF6-4452-A602-9B3F976F7047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68BF40D-5AF6-4452-A602-9B3F976F7047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68BF40D-5AF6-4452-A602-9B3F976F7047}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

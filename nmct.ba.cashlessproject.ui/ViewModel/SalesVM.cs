@@ -12,7 +12,7 @@ using System.Text;
 
 namespace nmct.ba.cashlessproject.ui.ViewModel
 {
-    class SalesVM : ObservableObject, IPage
+    public class SalesVM : ObservableObject, IPage
     {
         public SalesVM()
         {
@@ -20,6 +20,18 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
             GetProducts();
             GetSales();
             FilterTypes = new ObservableCollection<string> {"Disabled", "Register", "Product"};
+        }
+
+        public ApplicationVM applicationVM
+        {
+            get
+            {
+                return App.Current.MainWindow.DataContext as ApplicationVM;
+            }
+            set
+            {
+                OnPropertyChanged("applicationVM");
+            }
         }
 
         public string Name

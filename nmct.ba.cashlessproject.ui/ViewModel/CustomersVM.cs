@@ -20,6 +20,17 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
             GetCustomers();
         }
 
+        public ApplicationVM applicationVM
+        {
+            get
+            {
+                return App.Current.MainWindow.DataContext as ApplicationVM;
+            }
+            set
+            {
+                OnPropertyChanged("applicationVM");
+            }
+        }
 
         public string Name
         {
@@ -114,6 +125,7 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
         }
 
         private RelayCommand _saveCustomerCommand;
+        
         public RelayCommand SaveCustomerCommand
         {
             get

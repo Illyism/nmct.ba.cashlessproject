@@ -36,17 +36,32 @@
         </ListBox>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="8">
-            <Label Content="Name:"></Label>
-            <TextBox Text="{Binding SelectedProduct.ProductName}"></TextBox>
+            <Label Content="Name" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedProduct.ProductName, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
 
-            <Label Content="Price:"></Label>
-            <TextBox Text="{Binding SelectedProduct.Price}"></TextBox>
+            <Label Content="Price" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedProduct.Price,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"
+                     ></TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="8" Orientation="Horizontal">
-            <Button Content="Add Product" Command="{Binding AddProductCommand}"/>
-            <Button Content="Delete Product" Command="{Binding DeleteProductCommand}"/>
-            <Button Content="Save Product" Command="{Binding SaveProductCommand}"/>
-        </StackPanel>
+        <Grid Grid.Column="1" Margin="{StaticResource CommonMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Add Product" Command="{Binding AddProductCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="0"/>
+            <Button Content="Delete Product" Command="{Binding DeleteProductCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="1"/>
+            <Button Content="Save Product" Command="{Binding SaveProductCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="2"/>
+        </Grid>
     </Grid>
 </UserControl>

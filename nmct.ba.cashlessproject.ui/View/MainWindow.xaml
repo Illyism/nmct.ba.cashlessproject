@@ -3,38 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.View"
         xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
-        Title="Cashless Payment" Height="500" Width="700">
+        Title="Management | Cashless Payment" Height="500" Width="700">
     <Window.Resources>
-        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-            <Style.Setters>
-                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-            </Style.Setters>
-        </Style>
-        <Style TargetType="{x:Type StackPanel}" x:Key="SidebarMenu">
-            <Style.Setters>
-                <Setter Property="Margin" Value="4"></Setter>
-            </Style.Setters>
-            <Style.Resources>
-                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                    <Setter Property="BorderThickness" Value="1,0"/>
-                    <Setter Property="FontSize" Value="14"/>
-                </Style>
-            </Style.Resources>
-        </Style>
-        <Style TargetType="{x:Type StackPanel}" x:Key="TopActions">
-            <Style.Setters>
-                <Setter Property="Margin" Value="0,5"></Setter>
-            </Style.Setters>
-        </Style>
         <DataTemplate DataType="{x:Type vm:CustomersVM}">
             <v:CustomersPage></v:CustomersPage>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:EmployeesVM}">
             <v:EmployeesPage></v:EmployeesPage>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ErrorLogsVM}">
-            <v:ErrorLogsPage></v:ErrorLogsPage>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:ProductsVM}">
             <v:ProductsPage></v:ProductsPage>
@@ -45,9 +20,6 @@
         <DataTemplate DataType="{x:Type vm:SalesVM}">
             <v:SalesPage></v:SalesPage>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:OrganisationsVM}">
-            <v:OrganisationsPage></v:OrganisationsPage>
-        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:LoginVM}">
             <v:LoginPage></v:LoginPage>
         </DataTemplate>
@@ -57,7 +29,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -65,23 +37,26 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ContentControl Grid.Row="0" Grid.ColumnSpan="2">
-            <v:MenuControl></v:MenuControl>
-        </ContentControl>
+        <Menu IsMainMenu="True" Grid.ColumnSpan="2"
+              Style="{StaticResource MainMenu}"
+              Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVisibiliyConverter}}">
+            <Menu.DataContext>
+                <vm:MenuVM></vm:MenuVM>
+            </Menu.DataContext>
+            <MenuItem Header="Account" Style="{StaticResource MainMenuItem}">
+                <MenuItem Header="Change Password" Command="{Binding AccountCommand}"></MenuItem>
+                <MenuItem Header="Log Out" Command="{Binding LogOutCommand}"></MenuItem>
+                <Separator IsEnabled="False"></Separator>
+                <MenuItem Header="Exit"  Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Ilias Ismanalijev" Command="{Binding HelpCommand}"/>
+                <MenuItem Header="2NMCT1" Command="{Binding HelpCommand}"/>
+            </MenuItem>
+        </Menu>
 
-        <StackPanel Style="{StaticResource SidebarMenu}" Grid.Row="1" Grid.Column="0">
-            <ItemsControl ItemsSource="{Binding Pages}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-
-        <Grid Grid.Row="1" Grid.Column="1">
-            <ContentControl Content="{Binding CurrentPage}" Grid.Column="1"/>
-        </Grid>
+        <ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Pages}" ItemTemplate="{StaticResource SideBarItem}" />
+        <ContentControl Grid.Row="1" Background="#D1D5D8" Padding="{StaticResource PageMargin}" Content="{Binding CurrentPage}" Grid.Column="1"/>
 
     </Grid>
 </Window>

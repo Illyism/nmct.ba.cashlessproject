@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500">
+             d:DesignHeight="500" d:DesignWidth="700">
     <UserControl.DataContext>
         <vm:EmployeesVM/>
     </UserControl.DataContext>
@@ -36,23 +36,49 @@
         </ListBox>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="8">
-            <Label Content="Name:"></Label>
-            <TextBox Text="{Binding SelectedEmployee.EmployeeName}"></TextBox>
+            <Label Content="Name" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedEmployee.EmployeeName, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
 
-            <Label Content="Address:"></Label>
-            <TextBox Text="{Binding SelectedEmployee.Address}"></TextBox>
+            <Label Content="Address" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedEmployee.Address, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
 
-            <Label Content="Email:"></Label>
-            <TextBox Text="{Binding SelectedEmployee.Email}"></TextBox>
+            <Label Content="Email" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedEmployee.Email, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
 
-            <Label Content="Phone:"></Label>
-            <TextBox Text="{Binding SelectedEmployee.Phone}"></TextBox>
+            <Label Content="Phone" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedEmployee.Phone, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                       Style="{StaticResource Input}"></TextBox>
+
+            <Label Content="National Number" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedEmployee.NationalNumber, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="8" Orientation="Horizontal">
-            <Button Content="Add Employee" Command="{Binding AddEmployeeCommand}"/>
-            <Button Content="Delete Employee" Command="{Binding DeleteEmployeeCommand}"/>
-            <Button Content="Save Employee" Command="{Binding SaveEmployeeCommand}"/>
-        </StackPanel>
+        <Grid Grid.Column="1" Margin="{StaticResource CommonMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Add Employee" Command="{Binding AddEmployeeCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="0"/>
+            <Button Content="Delete Employee" Command="{Binding DeleteEmployeeCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="1"/>
+            <Button Content="Save Employee" Command="{Binding SaveEmployeeCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="2"/>
+        </Grid>
     </Grid>
 </UserControl>

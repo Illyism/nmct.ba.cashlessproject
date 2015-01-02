@@ -19,6 +19,18 @@ namespace nmct.ba.cashlessproject.ui.ViewModel
             GetEmployees();
         }
 
+        public ApplicationVM applicationVM
+        {
+            get
+            {
+                return App.Current.MainWindow.DataContext as ApplicationVM;
+            }
+            set
+            {
+                OnPropertyChanged("applicationVM");
+            }
+        }
+
 
         public string Name
         {

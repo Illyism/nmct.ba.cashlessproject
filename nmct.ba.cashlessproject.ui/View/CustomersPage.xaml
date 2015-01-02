@@ -36,20 +36,44 @@
         </ListBox>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="8">
-            <Label Content="Name:"></Label>
-            <TextBox Text="{Binding SelectedCustomer.CustomerName}"></TextBox>
+            <Label Content="Name" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedCustomer.CustomerName, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
 
-            <Label Content="Address:"></Label>
-            <TextBox Text="{Binding SelectedCustomer.Address}"></TextBox>
+            <Label Content="Address" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedCustomer.Address, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
 
-            <Label Content="Balance:"></Label>
-            <TextBox Text="{Binding SelectedCustomer.Balance}"></TextBox>
+            <Label Content="Balance" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedCustomer.Balance, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
+
+            <Label Content="National Number" Style="{StaticResource InputLabel}"></Label>
+            <TextBox Text="{Binding SelectedCustomer.NationalNumber, UpdateSourceTrigger=PropertyChanged,
+                NotifyOnValidationError=true, ValidatesOnDataErrors=true}"
+                     Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                     Style="{StaticResource Input}"></TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="8" Orientation="Horizontal">
-            <Button Content="Add Customer" Command="{Binding AddCustomerCommand}"/>
-            <Button Content="Delete Customer" Command="{Binding DeleteCustomerCommand}"/>
-            <Button Content="Save Customer" Command="{Binding SaveCustomerCommand}"/>
-        </StackPanel>
+        <Grid Grid.Column="1" Margin="{StaticResource CommonMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Add Customer" Command="{Binding AddCustomerCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="0"/>
+            <Button Content="Delete Customer" Command="{Binding DeleteCustomerCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="1"/>
+            <Button Content="Save Customer" Command="{Binding SaveCustomerCommand}"
+                    Style="{StaticResource BlueButton}" Grid.Column="2
+                    "/>
+        </Grid>
     </Grid>
 </UserControl>
