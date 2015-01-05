@@ -1,0 +1,90 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.employee.View.SaleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:nmct.ba.cashlessproject.employee.View"
+        xmlns:vm="clr-namespace:nmct.ba.cashlessproject.employee.ViewModel"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        Title="New Sale" Height="500" Width="500" WindowStyle="ToolWindow">
+    <Window.DataContext>
+        <vm:SaleVM />
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveSalesCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+        <KeyBinding Key="Delete" Command="{Binding RemoveSaleCommand}"/>
+    </Window.InputBindings>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="New Sale"
+                   Style="{StaticResource TextH3}"></TextBlock>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ListBox Grid.RowSpan="2" Margin="{StaticResource RightMargin}"
+                     ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"
+                     ItemTemplate="{StaticResource ProductItem}"
+                     Style="{StaticResource SaleListBox}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Sell Product" Command="{Binding AddSaleCommand}"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                        <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+            <ListBox Grid.Column="1" Margin="{StaticResource LeftMargin}"
+                     ItemsSource="{Binding Sales}" SelectedItem="{Binding SelectedSale}"
+                     ItemTemplate="{StaticResource SaleItem}"
+                     Style="{StaticResource SaleListBox}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="+ Increase Amount" Command="{Binding IncrAmountCommand}"></MenuItem>
+                        <MenuItem Header="- Decrease Amount" Command="{Binding DecrAmountCommand}"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Remove Product" Command="{Binding RemoveSaleCommand}"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+            
+            <StackPanel Margin="4" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Total: €"
+                               Style="{StaticResource TextH3}"></TextBlock>
+                    <TextBlock Text="{Binding TotalPrice}"
+                               Style="{StaticResource TextH3}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Customer Balance: €"
+                               Style="{StaticResource TextH5}"></TextBlock>
+                    <TextBlock Text="{Binding CustomerBalance}"
+                               Style="{StaticResource TextH5}"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        
+        <Button Grid.Row="2" Content="Cancel"
+                Style="{StaticResource Button}"
+                Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="Submit"
+                Style="{StaticResource BlueButton}"
+                Command="{Binding SaveSalesCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"></Button>
+    </Grid>
+</Window>

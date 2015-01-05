@@ -1,0 +1,22 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.ui.View.AccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.View"
+        xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+        Title="Account Settings" Height="250" Width="400" WindowStyle="ToolWindow">
+    <Window.DataContext>
+        <vm:AccountVM></vm:AccountVM>
+    </Window.DataContext>
+    <StackPanel Margin="{StaticResource PageMargin}">
+        <TextBlock Text="Change Password"
+                   Style="{StaticResource TextH1}" Margin="0,0,0,20"></TextBlock>
+
+        <TextBlock Text="New Password"
+                       Margin="{StaticResource CommonMargin}"
+                       Style="{StaticResource TextH4}"/>
+        <TextBox Text="{Binding NewPassword, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource LoginInput}"></TextBox>
+        <Button Content="Change Password" Command="{Binding SubmitPasswordCommand}"
+                Style="{StaticResource BlueButton}" Height="30" Width="120"></Button>
+    </StackPanel>
+</Window>

@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="nmct.ba.cashlessproject.customer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="dblogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">almost</Value>
+    </Setting>
+    <Setting Name="dbpass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">done</Value>
+    </Setting>
+    <Setting Name="RegisterID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="RegisterName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AlmostReg</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

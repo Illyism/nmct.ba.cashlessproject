@@ -1,0 +1,141 @@
+﻿@model IEnumerable<nmct.ba.cashlessproject.classlibrary.Register>
+
+@{
+    ViewBag.Title = "Registers";
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Device)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiresDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Device)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiresDate)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-link btn-xs" })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-link btn-xs" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-link btn-xs" })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<hr />
+
+<h2>Unused Registers</h2>
+@{ IEnumerable<nmct.ba.cashlessproject.classlibrary.Register> unreg = ViewBag.UnusedRegisters; }
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Device)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiresDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in unreg)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiresDate)
+            </td>
+            <td>
+                @Html.ActionLink("Assign To Organisation", "Assign", new { id = item.ID }, new { @class = "btn btn-link btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />
+
+<h2>Used Registers</h2>
+
+@{ IEnumerable<nmct.ba.cashlessproject.classlibrary.OrganisationRegister> orgreg = ViewBag.OrganisationRegisters; }
+<table class="table table-striped">
+    <tr>
+        <th>Register</th>
+        <th>Organisation</th>
+        <th>From</th>
+        <th>Until</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in orgreg) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.RegisterName, "Details", new { id = item.RegisterID })
+        </td>
+        <td>
+            @Html.ActionLink(item.OrganisationName, "Details", "Organisations", new { id = item.OrganisationID }, new object { })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UntilDate)
+        </td>
+        <td>
+            @Html.ActionLink("Unassign Register", "UnAssign", new { regId = item.RegisterID }, new { @class = "btn btn-link btn-xs" })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+
+
+@section Jumbotron {
+    <div class="jumbotron" style="background-image: url('http://lorempixel.com/1900/300/business/');">
+        <div class="container">
+            <h1 class="head">Registers</h1>
+            <p class="text-center head">
+                @Html.ActionLink("Add Register", "Create", new { }, new { @class = "btn btn-primary" })
+            </p>
+        </div>
+    </div>
+}

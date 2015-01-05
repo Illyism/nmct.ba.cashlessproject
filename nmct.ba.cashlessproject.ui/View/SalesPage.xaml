@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.ui.View.SalesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+             xmlns:c="clr-namespace:nmct.ba.cashlessproject.ui.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <UserControl.DataContext>
+        <vm:SalesVM/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <c:DateConverter x:Key="DateConverter"></c:DateConverter>
+        <c:TimeConverter x:Key="TimeConverter"></c:TimeConverter>
+        <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Margin="8" Orientation="Horizontal">
+            <TextBlock Text="Filter "/>
+            <ComboBox SelectedItem="{Binding FilterType}" ItemsSource="{Binding FilterTypes}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox SelectedItem="{Binding FilterValue}" ItemsSource="{Binding FilterValues}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        
+        <DataGrid Background="white" Grid.Row="1" ItemsSource="{Binding Sales}" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding SelectedSale}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="_Filter By Register" Command="{Binding FilterByRegisterCommand}" />
+                    <MenuItem Header="_Filter By Product" Command="{Binding FilterByProductCommand}" />
+                    <MenuItem Header="_Undo Filter" Command="{Binding UndoFilterCommand}" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="ID"
+                    Binding="{Binding ID}"/>
+                <DataGridTextColumn
+                    Header="Date"
+                    Binding="{Binding Timestamp, Converter={StaticResource DateConverter}}"/>
+                <DataGridTextColumn
+                    Header="Time"
+                    Binding="{Binding Timestamp, Converter={StaticResource TimeConverter}}"/>
+                <DataGridTextColumn
+                    Header="Customer"
+                    Binding="{Binding CustomerName}"/>
+                <DataGridTextColumn
+                    Header="Register"
+                    Binding="{Binding RegisterName}"/>
+                <DataGridTextColumn
+                    Header="Product"
+                    Binding="{Binding ProductName}"/>
+                <DataGridTextColumn
+                    Header="Amount"
+                    Binding="{Binding Amount}"/>
+                <DataGridTextColumn
+                    Header="Total Price"
+                    Binding="{Binding TotalPrice}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

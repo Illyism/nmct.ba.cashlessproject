@@ -1,0 +1,51 @@
+﻿@model nmct.ba.cashlessproject.classlibrary.Register
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.RegisterName</h2>
+
+<ul class="nav nav-pills">
+    <li><a href="/Register">&#171; List</a></li>
+    <li class="active">@Html.ActionLink("Details", "Details", new { id = Model.ID })<li>
+    <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</li>
+    <li>@Html.ActionLink("Delete", "Delete", new { id = Model.ID })</li>
+</ul>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Device)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiresDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiresDate)
+        </dd>
+
+    </dl>
+</div>

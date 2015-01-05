@@ -1,0 +1,25 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.customer.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:nmct.ba.cashlessproject.customer.View"
+        xmlns:vm="clr-namespace:nmct.ba.cashlessproject.customer.ViewModel"
+        Title="Customer | Cashless Payment" Height="500" Width="700">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Style.Setters>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            </Style.Setters>
+        </Style>
+        <DataTemplate DataType="{x:Type vm:LoginVM}">
+            <v:LoginPage></v:LoginPage>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MainPageVM}">
+            <v:MainPage></v:MainPage>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:ApplicationVM />
+    </Window.DataContext>
+    
+    <ContentControl Content="{Binding CurrentPage}" Grid.Column="1"/>
+</Window>

@@ -1,0 +1,181 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:nmct.ba.cashlessproject.customer.Converters">
+    
+    <c:StringToVisibiliyConverter x:Key="StringToVisibiliyConverter"/>
+    <c:CustomerToVisibilityConverter x:Key="CustomerToVisibilityConverter"/>
+    <c:BoolToVisibiliyConverter x:Key="BoolToVisibilityConverter"/>
+    <c:ByteToImageConverter x:Key="ByteToImageConverter"/>
+    <c:DateConverter x:Key="DateConverter"></c:DateConverter>
+    <c:TimeConverter x:Key="TimeConverter"></c:TimeConverter>
+    <c:EmployeeToVisibilityConverter x:Key="EmployeeToVisibilityConverter"/>
+
+
+    <Thickness x:Key="CommonMargin" Left="4" Right="4" Top="4" Bottom="4" />
+    <Thickness x:Key="BottomMargin" Left="0" Right="0" Top="0" Bottom="2" />
+    <Thickness x:Key="RightMargin" Left="0" Right="2" Top="0" Bottom="0" />
+    <Thickness x:Key="LeftMargin" Left="2" Right="0" Top="0" Bottom="0" />
+    <Thickness x:Key="TopMargin" Left="0" Right="0" Top="2" Bottom="0" />
+    <Thickness x:Key="PageMargin" Left="20" Right="20" Top="20" Bottom="20" />
+
+    <Style x:Key="HideNotEnabled" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+     
+    <Style x:Key="Button" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Style.Setters>
+            <Setter Property="Background" Value="#EFEFEF"></Setter>
+            <Setter Property="Foreground" Value="#28324E"></Setter>
+            <Setter Property="FontFamily" Value="Segoe UI SemiBold"></Setter>
+            <Setter Property="FontSize" Value="12px"></Setter>
+            <Setter Property="Margin" Value="{StaticResource CommonMargin}"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#D1D5D8"></Setter>
+                <Setter Property="Cursor" Value="Hand"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="BlueButton" TargetType="{x:Type Button}" BasedOn="{StaticResource Button}">
+        <Style.Setters>
+            <Setter Property="Background" Value="#54ACD2"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#3D8EB9"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="BlueButtonHideNotEnabled" TargetType="{x:Type Button}" BasedOn="{StaticResource BlueButton}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Text" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Style.Setters>
+            <Setter Property="FontFamily" Value="Segoe UI Light"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextError" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="Foreground" Value="#B8312F"></Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="TextErrorCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextError}">
+        <Style.Setters>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextH1" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="32"></Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="TextH1Center" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextH1}">
+        <Style.Setters>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextH2" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="28"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextH3" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextH4" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="TextH4Center" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextH4}">
+        <Style.Setters>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextH5" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="TextH5Center" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextH5}">
+        <Style.Setters>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TextH6" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="12"></Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="TextH6Center" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextH6}">
+        <Style.Setters>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style.Setters>
+    </Style>
+
+
+    <Style x:Key="BankNote" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Style.Setters>
+            <Setter Property="FontFamily" Value="Segoe UI SemiBold"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Background" Value="#D1D5D8"></Setter>
+            <Setter Property="Margin" Value="8"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"></Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#EFEFEF"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

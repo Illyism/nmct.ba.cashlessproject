@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.ui.View.LoginPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <UserControl.DataContext>
+        <vm:LoginVM/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Cashless Payment"
+                       Style="{StaticResource TextH1Center}"></TextBlock>
+            <TextBlock Text="Management"
+                       Margin="{StaticResource BottomMargin}"
+                       Style="{StaticResource TextH4Center}"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" MaxWidth="400">
+            <TextBlock Text="Username"
+                       Margin="{StaticResource CommonMargin}"
+                       Style="{StaticResource TextH4}" />
+            <TextBox Text="{Binding Username}"
+                     Style="{StaticResource LoginInput}" ForceCursor="True"/>
+
+            <TextBlock Text="Password"
+                       Margin="{StaticResource CommonMargin}"
+                       Style="{StaticResource TextH4}"/>
+            <TextBox Text="{Binding Password}"
+                     Style="{StaticResource LoginInput}"/>
+            <Button Content="Log In" Command="{Binding LoginCommand}"
+                    Style="{StaticResource BlueButton}" Height="30" Width="80"/>
+            
+            <TextBlock Text="{Binding Error}"
+                       Margin="{StaticResource CommonMargin}"
+                       Style="{StaticResource TextErrorCenter}"/>
+        </StackPanel>
+    </Grid>
+   
+</UserControl>

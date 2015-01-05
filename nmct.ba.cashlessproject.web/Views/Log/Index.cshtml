@@ -1,0 +1,42 @@
+﻿@model IEnumerable<nmct.ba.cashlessproject.classlibrary.ErrorLog>
+
+@{
+    ViewBag.Title = "Logs";
+}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id=@Html.AttributeEncode("heading" + ViewBag.index)>
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href=@Html.AttributeEncode("#collapse" + ViewBag.index) aria-expanded="false" aria-controls=@Html.AttributeEncode("collapse" + ViewBag.index)>
+                        <span class="badge">@Html.DisplayFor(modelItem => item.RegisterID)</span>
+                        <span class="badge">@Html.DisplayFor(modelItem => item.Timestamp)</span>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </a>
+                </h4>
+            </div>
+            <div id=@Html.AttributeEncode("collapse" + ViewBag.index) class="panel-collapse collapse" role="tabpanel" aria-labelledby=@Html.AttributeEncode("heading" + ViewBag.index)>
+                <pre class="panel-body">
+                    <code>
+                        @Html.DisplayFor(modelItem => item.Stacktrace)
+                    </code>
+                </pre>
+            </div>
+        </div>
+        ViewBag.index++;
+    }
+</div>
+
+
+
+
+
+@section Jumbotron {
+    <div class="jumbotron" style="background-image: url('http://lorempixel.com/1900/300/business/');">
+        <div class="container">
+            <h1 class="head">Logs</h1>
+        </div>
+    </div>
+}

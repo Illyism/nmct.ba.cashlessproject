@@ -1,0 +1,103 @@
+﻿@model nmct.ba.cashlessproject.classlibrary.Organisation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete @Model.OrganisationName</h2>
+
+<ul class="nav nav-pills">
+    <li><a href="/Organisations">&#171; List</a></li>
+    <li>@Html.ActionLink("Details", "Details", new { id = Model.ID })</li>
+    <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</li>
+    <li class="active">@Html.ActionLink("Delete", "Delete", new { id = Model.ID })</li>
+</ul>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Organisation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DbName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DbName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DbLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DbLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DbPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DbPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancel", "Index", new { }, new { @class = "btn btn-default" })
+            <input type="submit" value="Delete" class="btn btn-primary" />
+        </div>
+    }
+</div>

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.customer.View.LoginPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.customer.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <UserControl.DataContext>
+        <vm:LoginVM/>
+    </UserControl.DataContext>
+
+    <Grid Margin="{StaticResource PageMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Cashless Payment" Style="{StaticResource TextH1Center}"></TextBlock>
+            <TextBlock Text="Insert your Identification Card and register or log in." Style="{StaticResource TextH5Center}"></TextBlock>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Log In" Command="{Binding LoginCommand}"
+                Style="{StaticResource BlueButton}" Width="80"/>
+        
+        <TextBlock Foreground="Red" Text="{Binding Error}" Grid.Row="2"
+                    Style="{StaticResource TextErrorCenter}"
+                    Visibility="{Binding Error, Converter={StaticResource StringToVisibiliyConverter}}"/>
+        
+        <Grid Grid.Row="3" Visibility="{Binding IsNewCustomer, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Margin="{StaticResource CommonMargin}" Source="{Binding NewCustomer.Picture, Converter={StaticResource ByteToImageConverter}}"></Image>
+            
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="{StaticResource CommonMargin}">
+                <TextBlock Text="{Binding NewCustomer.CustomerName}"
+                           Style="{StaticResource TextH3}" ></TextBlock>
+                <TextBlock Text="{Binding NewCustomer.Address}"
+                           Style="{StaticResource TextH3}" ></TextBlock>
+            </StackPanel>
+
+            <Button Content="Register" Command="{Binding RegisterCommand}"
+                    Style="{StaticResource BlueButtonHideNotEnabled}" Grid.Row="1" Grid.ColumnSpan="2"></Button>
+        </Grid>
+    </Grid>
+    
+    
+    
+</UserControl>

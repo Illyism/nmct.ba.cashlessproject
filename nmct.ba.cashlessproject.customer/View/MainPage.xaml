@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.customer.View.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.customer.ViewModel"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+    <UserControl.DataContext>
+        <vm:MainPageVM/>
+    </UserControl.DataContext>
+    
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Content="Log Out" Grid.Row="0" Command="{Binding LogOutCommand}"
+                    Style="{StaticResource BlueButton}">
+                <Button.ToolTip>
+                    <TextBlock Text="{Binding CurrentCustomer.CustomerName}"></TextBlock>
+                </Button.ToolTip>
+            </Button>
+            <StackPanel VerticalAlignment="Center" Grid.Column="1" Orientation="Horizontal"
+                    Margin="{StaticResource CommonMargin}" HorizontalAlignment="Center"
+                    Visibility="{Binding Customer, Converter={StaticResource CustomerToVisibilityConverter}}">
+                <TextBlock Text="Customer: "
+                       Style="{StaticResource TextH5}"></TextBlock>
+                <TextBlock Text="{Binding CurrentCustomer.CustomerName}"
+                       Style="{StaticResource TextH5}"></TextBlock>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" Grid.Column="2" Orientation="Horizontal"
+                    Margin="{StaticResource CommonMargin}" HorizontalAlignment="Center"
+                    Visibility="{Binding Customer, Converter={StaticResource CustomerToVisibilityConverter}}">
+                <TextBlock Text="Balance: €"
+                       Style="{StaticResource TextH5}"></TextBlock>
+                <TextBlock Text="{Binding CurrentCustomer.Balance}"
+                       Style="{StaticResource TextH5}"></TextBlock>
+            </StackPanel>
+
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.RowSpan="2" Style="{StaticResource BankNote}" Content="€5" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>5</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource BankNote}" Content="+" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>5</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource BankNote}" Content="-" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>-5</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            
+            <Button Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource BankNote}" Content="€10" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>10</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource BankNote}" Content="+" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>10</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="3" Style="{StaticResource BankNote}" Content="-" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>-10</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            
+            
+            <Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Style="{StaticResource BankNote}" Content="€20" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>20</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource BankNote}" Content="+" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>20</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource BankNote}" Content="-" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>-20</s:Double>
+                </Button.CommandParameter>
+            </Button>
+
+
+            <Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource BankNote}" Content="€50" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>50</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="3" Style="{StaticResource BankNote}" Content="+" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>50</s:Double>
+                </Button.CommandParameter>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="3" Style="{StaticResource BankNote}" Content="-" Command="{Binding AddBankNoteCommand}">
+                <Button.CommandParameter>
+                    <s:Double>-50</s:Double>
+                </Button.CommandParameter>
+            </Button>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="{StaticResource LeftMargin}">
+            <TextBlock Text="Top Up: €"
+                       Style="{StaticResource TextH3}"></TextBlock>
+            <TextBlock Text="{Binding CustomerTopUpBalance}" 
+                       Style="{StaticResource TextH3}"></TextBlock>
+        </StackPanel>
+        <Button Content="Top Up" Grid.Column="1" Grid.Row="3" Command="{Binding TopUpCommand}"
+                Style="{StaticResource BlueButton}"></Button>
+
+    </Grid>
+</UserControl>

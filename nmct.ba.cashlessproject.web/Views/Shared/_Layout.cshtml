@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Cashless Payment</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Cashless Payment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Organisations", "Index", "Organisations")</li>
+                    <li>@Html.ActionLink("Registers", "Index", "Register")</li>
+                    <li>@Html.ActionLink("Logs", "Index", "Log")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    @RenderSection("jumbotron", required: false)
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer class="text-center container">
+        <p>&copy; @DateTime.Now.Year - Ilias Ismanalijev</p>
+        <img src="data:image/png;base64,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" alt="NMCT" />
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

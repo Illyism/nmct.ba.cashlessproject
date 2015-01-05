@@ -1,0 +1,76 @@
+﻿@model nmct.ba.cashlessproject.classlibrary.OrganisationRegister
+
+@{
+    ViewBag.Title = "UnAssign";
+}
+
+<h3>Are you sure you want to unassign @Model.RegisterName from @Model.OrganisationName?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganisationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganisationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Device)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UntilDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UntilDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancel", "Index", new { }, new { @class = "btn btn-default" })
+            <input type="submit" value="Delete" class="btn btn-primary" />
+        </div>
+    }
+</div>
